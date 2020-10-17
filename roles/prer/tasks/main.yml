@@ -1,0 +1,8 @@
+- name: Install Prerequisites
+  package:
+    name:
+      - vim
+      - wget
+      - git
+      - unzip
+    state: "{{ desired_state }}"

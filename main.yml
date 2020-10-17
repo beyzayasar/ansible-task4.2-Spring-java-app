@@ -1,0 +1,12 @@
+- hosts: web1c
+  tasks:
+
+  - name: Install Prerequisites
+    import_role:
+      name: prer
+  
+  - include_tasks: "{{ ansible_os_family }}.yml" 
+
+  - name: Install openjdk
+    import_role:
+      name: java

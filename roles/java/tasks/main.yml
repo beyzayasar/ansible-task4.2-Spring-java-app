@@ -1,0 +1,19 @@
+---
+- name: java
+  package:
+    name: 
+      - "{{ ojdk_8_RH }}"
+      - maven
+    state: latest
+  when: ansible_os_family == 'RedHat'
+
+- name: install mvnw 
+  shell: "./mvnw package"    
+  args:
+    chdir: /home/centos/spring-petclinic
+    creates: /home/centos/spring-petclinic/target
+
+- name: run java on Background
+  shell: 'pkill java & nohup java -jar target/*.jar &'
+  args:
+    chdir: /home/centos/spring-petclinic
