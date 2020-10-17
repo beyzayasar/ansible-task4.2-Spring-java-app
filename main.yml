@@ -1,4 +1,4 @@
-- hosts: web1c
+- hosts: all
   tasks:
 
   - name: Install Prerequisites

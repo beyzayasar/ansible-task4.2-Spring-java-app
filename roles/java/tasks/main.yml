@@ -7,13 +7,46 @@
     state: latest
   when: ansible_os_family == 'RedHat'
 
-- name: install mvnw 
+- name: java
+  package:
+    name: 
+      - "{{ ojdk_8_Deb }}"
+      - maven
+    state: latest
+  when: ansible_os_family == 'Debian'
+
+
+- name: install mvnw Redhat
   shell: "./mvnw package"    
   args:
     chdir: /home/centos/spring-petclinic
-    creates: /home/centos/spring-petclinic/target
+    creates: /home/centos/spring-petclinic/target/*.jar
+  when: ansible_os_family == 'RedHat'
 
-- name: run java on Background
-  shell: 'pkill java & nohup java -jar target/*.jar &'
+- name: install mvnw Ubuntu
+  shell: "./mvnw package"    
+  args:
+    chdir: /home/ubuntu/spring-petclinic
+    creates: /home/ubuntu/spring-petclinic/target/*.jar
+  when: ansible_os_family == 'Debian'
+
+- name: change ownership /target recursivly
+  file:
+     path: /home/centos/spring-petclinic/target/spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar
+     state: directory
+     recurse: yes
+     owner: apache 
+     group: apache 
+     mode: '0655'
+
+- name: run java on Background Redhat
+  shell: 'nohup java -jar target/*.jar &'    #'pkill java && nohup java -jar target/*.jar &'
   args:
     chdir: /home/centos/spring-petclinic
+  when: ansible_os_family == 'RedHat'
+
+- name: run java on Background Ubuntu
+  shell: 'nohup java -jar target/*.jar &'
+  args:
+    chdir: /home/ubuntu/spring-petclinic
+  when: ansible_os_family == 'Debian'

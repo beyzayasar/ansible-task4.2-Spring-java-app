@@ -1,6 +1,4 @@
 ---
-ojdk_11_RH: java-11-openjdk
-ojdk_11_Ub: openjdk-11-jdk
-ojdk_8_Deb: openjdk-8-jdk
+ojdk_8_Deb: openjdk-8-jre
 ojdk_8_RH: java-1.8.0-openjdk
 desired_state: latest

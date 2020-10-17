@@ -1,0 +1,4 @@
+- name: Clone a repo with separate git directory
+  git:
+    repo: https://github.com/ikambarov/spring-petclinic.git
+    dest: /home/ubuntu/spring-petclinic
