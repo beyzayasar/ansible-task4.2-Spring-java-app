@@ -33,11 +33,22 @@
 - name: change ownership /target recursivly
   file:
      path: /home/centos/spring-petclinic/target/spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar
-     state: directory
-     recurse: yes
-     owner: apache 
-     group: apache 
-     mode: '0655'
+     state: file
+     #recurse: yes
+     owner: centos 
+     group: centos
+     mode: '0755'
+  when: ansible_os_family == 'RedHat'
+
+- name: change ownership /target recursivly
+  file:
+     path: /home/ubuntu/spring-petclinic/target/spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar
+     state: file
+     #recurse: yes
+     owner: ubuntu
+     group: ubuntu
+     mode: '0755'
+  when: ansible_os_family == 'Debian'
 
 - name: run java on Background Redhat
   shell: 'nohup java -jar target/*.jar &'    #'pkill java && nohup java -jar target/*.jar &'
