@@ -10,3 +10,6 @@ Use:
     -Java
     
    o Installs multiple versions of OpenJDKRoles should be generic, and should work on both CentOS and Ubuntu
+   
+   Hint: ojdk_8_Deb: openjdk-8-jre
+         ojdk_8_RH: java-1.8.0-openjdk
