@@ -1,12 +1,10 @@
 galaxy_info:
   author: Vladlen Rodionov
-  description: A simple role to install prerequisites
+  description: A simple role to install Openjk 8 on Red Hats and Debian Families
   company: Archer
   license: Apache
   min_ansible_version: 1.4
   galaxy_tags:
-    - vim
-    - wget
-    - git
-    - unzip
+    openjdk-8-jre - Debian
+    java-1.8.0-openjdk. - RH
 dependencies: []
