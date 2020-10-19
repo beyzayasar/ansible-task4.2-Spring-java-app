@@ -8,8 +8,10 @@ Use:
   -Roles
   
     Roles:
-    -PrerequisitesoInstalls vim, wget, git, unzip, openjdk, maven
+    -Prerequisites
+        Installs vim, wget, git, unzip, openjdk, maven
     -Java
+        Installs openjdk, maven
     
    o Installs multiple versions of OpenJDKRoles should be generic, and should work on both CentOS and Ubuntu
    
